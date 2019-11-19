@@ -15,11 +15,14 @@ depends:
   ggplot2
   ggraph
   concaveman
+  GeneNet
   ggrepel
   ggthemes
+  glasso
   GO.db
   gplots
   GSEABase
+  heatmap3
   htmlwidgets
   httr
   igraph
@@ -27,6 +30,7 @@ depends:
   kableExtra
   knitr
   magrittr
+  matrixStats
   org.Hs.eg.db
   plotly
   plyr
@@ -52,6 +56,7 @@ depends:
   tidygraph
   viridis
   viridisLite
+  xlsx
   xml2
   github::cytoscape/cyjShiny
   github::BioPAX/paxtoolsr
