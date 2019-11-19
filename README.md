@@ -1,13 +1,44 @@
-# Specifying an R environment with a runtime.txt file
+# AWS Lightsail Instructions for rocker/binder Based TargetScore
 
-Jupyter+R: [![Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/binder-examples/rocker/master?filepath=index.ipynb)
+# Install Docker
+```
+# Non-interactive mode installation
+export DEBIAN_FRONTEND=noninteractive
+sudo apt-get update
+sudo apt install -y docker.io python3-pip git
 
-RStudio: [![Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/binder-examples/rocker/master?urlpath=rstudio)
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -aG docker ubuntu
+curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 
-RShiny: [![Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/binder-examples/rocker/master?urlpath=shiny/bus-dashboard/)
+# Install repo2docker
+sudo python3 -m pip install https://github.com/jupyter/repo2docker/archive/master.zip
 
-Both [RStudio](https://www.rstudio.com/) and [IRKernel](https://irkernel.github.io/)
-are installed by default, so you can use either the Jupyter notebook interface or
-the RStudio interface.
+# Make user because repo2docker connects real user to Docker guest user
+sudo adduser rstudio --disabled-password --gecos "" --uid 123
+```
 
-This repository also contains an example of a Shiny app.
+# Create Docker image
+```
+git clone https://github.com/cannin/rocker-binder-3.5.3.git
+cd rocker-binder-3.5.3
+sudo jupyter-repo2docker --user-id 123 --user-name rstudio --image-name cannin/targetscore:mcl1-analysis .
+```
+
+# Grab TargetScore specific code for installation within Docker
+```
+git clone https://cannin@bitbucket.org/cbio_mskcc/zeptosenspkg.git
+cd zeptosenspkg
+git checkout d893ecba4690f9d181b9070c5e00bc83983beb14 -b mcl1-analysis
+
+cp -R zeptosenspkg/zeptosensPkg/ rocker-binder-3.5.3/
+cp -R zeptosenspkg/zeptosensUtils/ rocker-binder-3.5.3/
+```
+
+# Commands for saving manual in-guest changes to image
+```
+sudo docker commit d720ecd1dedc cannin/targetscore:mcl1-analysis
+sudo docker push cannin/targetscore:mcl1-analysis
+sudo docker run -d cannin/targetscore:mcl1-analysis
+```

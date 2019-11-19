@@ -1,4 +1,4 @@
-FROM rocker/binder:3.5.3
+FROM rocker/binder:3.5.1
 
 USER root
 RUN apt-get -qq update && \
