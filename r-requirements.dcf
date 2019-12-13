@@ -47,6 +47,7 @@ depends:
   readxl
   remotes
   rJava
+  rjson
   rprojroot
   shiny
   stringi
@@ -60,3 +61,5 @@ depends:
   xml2
   github::cytoscape/cyjShiny
   github::BioPAX/paxtoolsr
+  local::/packages/zeptosensUtils
+  local::/packages/zeptosensPkg

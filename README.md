@@ -21,8 +21,8 @@ sudo adduser rstudio --disabled-password --gecos "" --uid 123
 
 # Create Docker image
 ```
-git clone https://github.com/cannin/rocker-binder-3.5.3.git
-cd rocker-binder-3.5.3
+git clone https://github.com/cannin/rocker-binder-3.5.1.git
+cd rocker-binder-3.5.1
 sudo jupyter-repo2docker --user-id 123 --user-name rstudio --image-name cannin/targetscore:mcl1-analysis .
 ```
 
@@ -32,8 +32,8 @@ git clone https://cannin@bitbucket.org/cbio_mskcc/zeptosenspkg.git
 cd zeptosenspkg
 git checkout d893ecba4690f9d181b9070c5e00bc83983beb14 -b mcl1-analysis
 
-cp -R zeptosenspkg/zeptosensPkg/ rocker-binder-3.5.3/
-cp -R zeptosenspkg/zeptosensUtils/ rocker-binder-3.5.3/
+cp -R zeptosenspkg/zeptosensPkg/ rocker-binder-3.5.1/
+cp -R zeptosenspkg/zeptosensUtils/ rocker-binder-3.5.1/
 ```
 
 # Commands for saving manual in-guest changes to image
