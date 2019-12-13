@@ -61,5 +61,5 @@ depends:
   xml2
   github::cytoscape/cyjShiny
   github::BioPAX/paxtoolsr
-  local::/packages/zeptosensUtils
-  local::/packages/zeptosensPkg
+  local::/home/rstudio/packages/zeptosensUtils
+  local::/home/rstudio/packages/zeptosensPkg
