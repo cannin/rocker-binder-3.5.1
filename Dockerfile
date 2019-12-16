@@ -16,6 +16,7 @@ USER rstudio
 # Add project specific content
 COPY packages /home/rstudio/packages
 COPY example /home/rstudio/example
+RUN chown -R rstudio:rstudio /home/rstudio
 
 ## Run an install.R script, if it exists.
 RUN if [ -f install.R ]; then R --quiet -f install.R; fi
