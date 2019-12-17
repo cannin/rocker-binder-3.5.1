@@ -60,7 +60,12 @@ nProt=217
 maxDist=1 # changing this value requires additional work to compute product(wk). This is not a priority
 
 #read proteomic response for stdev calculation
-inputFile <- file.path("example/example_hcc1954.csv")
+#inputFile <- file.path("example/skov3_brd4i_normSD.txt")
+#inputFile <- file.path("example/skbr3_brd4i_normSD.txt")
+#inputFile <- file.path("example/mdamb468_brd4i_normSD.txt")
+#inputFile <- file.path("example/bt474_brd4i_normSD.txt")
+
+inputFile <- file.path("example/hcc1954_brd4i_normSD.txt")
 x_A <- read.table(inputFile)
 
 stdev <- sampSdev(nSample=16,nProt=nProt,nDose=nDose,nX=x_A)
