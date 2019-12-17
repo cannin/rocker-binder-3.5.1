@@ -61,9 +61,7 @@ maxDist=1 # changing this value requires additional work to compute product(wk).
 
 #read proteomic response for stdev calculation
 inputFile <- file.path("example/example_hcc1954.csv")
-x_A <- read.csv(inputFile)
-sample_description<-x_A[,c(1:6)]
-x_A <- x_A[,-c(1:6)]
+x_A <- read.table(inputFile)
 
 stdev <- sampSdev(nSample=16,nProt=nProt,nDose=nDose,nX=x_A)
 networks <- network(nProt=nProt,
@@ -76,7 +74,7 @@ dist_ind <- networks$dist_ind
 inter <- networks$inter
 
 #TS
-cell_line <- paste0(sample_description$Sample.description,"_",sample_description$cellline,"_",sample_description$time,"_",sample_description$drug)
+cell_line <- rownames(x_A)
 
 
 targetScoreOutputFile <-paste0("HCC1954","_TS.txt")
