@@ -128,15 +128,13 @@ for (i in seq_len(nCond)){
 colnames(TS)<-colnames(x_A)
 colnames(TS_q)<-colnames(x_A)
 
-ts<-cbind(sample_description,TS)
-ts_q<-cbind(sample_description,TS_q)
+rownames(TS)<-rownames(x_A)
+rownames(TS_q)<-rownames(x_A)
 
-write.csv(ts,file = "ts.csv",row.names = F)
-write.csv(ts_q,file="ts_q.csv",row.names = F)
+write.csv(TS,file = "ts.csv",row.names = F)
+write.csv(TS_q,file="ts_q.csv",row.names = F)
 
 # Get the volcano plot
-rownames(TS)<-cell_line
-rownames(TS_q)<-cell_line
 
 for( i in seq_len(nCond)){
   filename<-paste0("p",i)
