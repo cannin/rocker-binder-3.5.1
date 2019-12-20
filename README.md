@@ -42,3 +42,8 @@ sudo docker commit d720ecd1dedc cannin/targetscore:mcl1-analysis
 sudo docker push cannin/targetscore:mcl1-analysis
 sudo docker run -d cannin/targetscore:mcl1-analysis
 ```
+
+# Run Docker
+```
+docker rm -f ts; docker run --name ts -p 8888:8888 -it cannin/targetscore:mcl1-analysis
+```
